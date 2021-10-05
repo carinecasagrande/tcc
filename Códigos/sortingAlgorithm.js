@@ -13,8 +13,6 @@ function bubbleSortRegular(vector) {
             }
         }
     }
-
-    return vector;
 }
 
 /**
@@ -35,8 +33,6 @@ function bubbleSortOptimized(vector) {
             }
         }
     }
-
-    return vector;
 }
 
 /**
@@ -51,14 +47,14 @@ function quickSort(vector) {
     let left = [];
     let right = [];
 
-    let middle = Math.round(vector.length / 2);
+    let middle = Math.trunc(vector.length / 2);
     let pivot = vector[middle];
 
     for (let i = 0; i < vector.length; i++) {
         if (i != middle) {
             if (vector[i] < pivot)
                 left.push(vector[i]);
-            if (vector[i] >= pivot)
+            else
                 right.push(vector[i]);
         }
     }
@@ -118,8 +114,6 @@ function insertionSort(vector) {
 
         vector[j + 1] = key;
     }
-
-    return vector;
 }
 
 /**
@@ -141,6 +135,4 @@ function selectionSort(vector) {
             vector[min] = aux;
         }
     }
-
-    return vector;
 }

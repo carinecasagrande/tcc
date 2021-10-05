@@ -59,7 +59,8 @@ function quickSort(vector) {
         }
     }
 
-    return quickSort(left).concat(pivot, quickSort(right));
+    let pivotArray = [pivot];
+    return quickSort(left).concat(pivotArray, quickSort(right));
 }
 
 /**

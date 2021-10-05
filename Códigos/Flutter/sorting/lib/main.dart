@@ -13,7 +13,7 @@ class Sorting extends StatelessWidget {
       title: 'Sorting',
       theme: ThemeData(
         fontFamily: 'Poppins',
-        toggleableActiveColor: const Color.fromRGBO(241, 100, 31,1),
+        toggleableActiveColor: const Color.fromRGBO(241, 100, 31, 1),
       ),
       debugShowCheckedModeBanner: false,
       home: const Home(title: 'Página Inicial'),

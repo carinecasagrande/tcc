@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:sorting/model/chart_data.dart';
+import 'package:sorting/ui/about.dart';
 
 class Result extends StatelessWidget {
   final String title;
@@ -53,20 +54,19 @@ class Result extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (_, constraints) => Material(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 50, top: 50),
-          child: Container(
-            decoration: const BoxDecoration(color: Colors.white),
-            child: Center(
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.9,
-                padding: const EdgeInsets.all(20),
-                child: Card(
-                  shadowColor: Colors.white,
-                  borderOnForeground: false,
-                  elevation: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+        color: Colors.white,
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: 50, top: 50),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.9,
+                  padding: const EdgeInsets.all(20),
+                  child: Card(
+                    margin: EdgeInsets.zero,
+                    elevation: 0,
                     child: Column(
                       children: <Widget>[
                         const Text(
@@ -77,7 +77,7 @@ class Result extends StatelessWidget {
                         Expanded(
                           child: charts.BarChart(
                             unsortedChart,
-                            animate: false,
+                            animate: true,
                             domainAxis: const charts.OrdinalAxisSpec(
                               renderSpec: charts.SmallTickRendererSpec(
                                 labelStyle: charts.TextStyleSpec(
@@ -102,7 +102,7 @@ class Result extends StatelessWidget {
                         Expanded(
                           child: charts.BarChart(
                             sortedChart,
-                            animate: false,
+                            animate: true,
                             domainAxis: const charts.OrdinalAxisSpec(
                               renderSpec: charts.SmallTickRendererSpec(
                                 labelStyle: charts.TextStyleSpec(
@@ -120,7 +120,7 @@ class Result extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
+                          padding: const EdgeInsets.only(top: 25),
                           child: SizedBox(
                             height: 53,
                             width: MediaQuery.of(context).size.width,
@@ -129,7 +129,7 @@ class Result extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                               child: const Text(
-                                'Págna Inicial',
+                                'Voltar',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -150,11 +150,31 @@ class Result extends StatelessWidget {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: TextButton(
+                            child: const Text('Sobre o app'),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const About(
+                                    title: 'Sobre',
+                                  ),
+                                ),
+                              );
+                            },
+                            style: TextButton.styleFrom(
+                              primary: const Color.fromRGBO(241, 100, 31, 1),
+                              textStyle: const TextStyle(fontSize: 19),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
         ),

@@ -8,27 +8,23 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) => Material(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 50),
-          child: Container(
-            decoration: const BoxDecoration(color: Colors.white),
+        color: Colors.white,
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 90),
-                  child: const Text(
-                    'Versão: Flutter',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                  ),
+                const Text(
+                  'Versão: Flutter',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 50),
                   child: const Text(
                     'Carine Casa Grande',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
                 Container(
@@ -36,7 +32,7 @@ class About extends StatelessWidget {
                   child: const Text(
                     'Comparação entre o desempenho de aplicações para smartphones desenvolvidos em Flutter e React Native:',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -44,15 +40,15 @@ class About extends StatelessWidget {
                   child: const Text(
                     'Uma análise utilizando algoritmos de ordenação',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 40, right: 20, left: 20),
+                  margin: const EdgeInsets.only(top: 40, right: 20, left: 100),
                   child: const Text(
                     'Trabalho de Conclusão de Curso apresentado ao Curso de Ciência da Computação do Centro Universitário Filadélfia – UniFil, como requisito parcial à obtenção do título de Bacharel em Ciência da Computação.\n\nOrientadora: Profª. Simone Sawasaki Tanaka',
                     textAlign: TextAlign.justify,
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
                 Container(
@@ -60,7 +56,7 @@ class About extends StatelessWidget {
                   child: const Text(
                     'Londrina\n2021',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
@@ -72,10 +68,10 @@ class About extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       child: const Text(
-                        'Página Inicial',
+                        'Voltar',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 19,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                       style: ButtonStyle(

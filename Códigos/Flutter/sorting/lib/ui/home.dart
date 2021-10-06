@@ -23,44 +23,35 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) => Material(
-        child: SingleChildScrollView(
-          child: Container(
-            decoration: const BoxDecoration(color: Colors.white),
+        color: Colors.white,
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Image.asset('assets/img/icon.png', height: 90),
                 Container(
-                  margin: const EdgeInsets.only(top: 70),
-                  child: Image.asset('assets/img/icon.png', height: 90),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                  margin: const EdgeInsets.fromLTRB(20, 20, 20, 40),
                   child: const Text(
                     'Análise de desempenho utilizando algortimos de ordenação',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 27, left: 20, right: 20),
-                  child: const Text(
-                    'Selecione a quantidade de elementos',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19),
-                  ),
+                const Text(
+                  'Selecione a quantidade de elementos',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
                 ),
                 buildQuant(),
-                Container(
-                  margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
-                  child: const Text(
-                    'Selecione o algoritmo de ordenação',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 19),
-                  ),
+                const Text(
+                  'Selecione o algoritmo de ordenação',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20),
                 ),
                 buildAlgorithm(),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                   child: SizedBox(
                     height: 53,
                     child: ElevatedButton(
@@ -76,7 +67,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 19),
+                            fontSize: 20),
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
@@ -111,7 +102,7 @@ class _HomeState extends State<Home> {
                   },
                   style: TextButton.styleFrom(
                     primary: const Color.fromRGBO(241, 100, 31, 1),
-                    textStyle: const TextStyle(fontSize: 19),
+                    textStyle: const TextStyle(fontSize: 20),
                   ),
                 ),
               ],
@@ -122,8 +113,107 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Future<String> loadAsset(String filename) async {
-    return await rootBundle.loadString('assets/txt/$filename.txt');
+  Widget buildQuant() {
+    return Container(
+      margin: const EdgeInsets.only(top: 10, bottom: 40),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          for (var item in [10, 100, 1000, 10000])
+            Row(
+              children: [
+                Radio(
+                  value: item,
+                  groupValue: quant,
+                  onChanged: (int? value) {
+                    setState(() {
+                      quant = value!;
+                    });
+                  },
+                ),
+                Text(
+                  '$item',
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildAlgorithm() {
+    return Container(
+      margin: const EdgeInsets.only(left: 20, top: 10),
+      child: Column(
+        children: [
+          for (var item in [
+            'Bubble Sort',
+            'Quick Sort',
+            'Merge Sort',
+            'Insertion Sort',
+            'Selection Sort'
+          ])
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Radio(
+                  value: item,
+                  groupValue: algorithm,
+                  onChanged: (String? value) {
+                    setState(() {
+                      algorithm = value!;
+                    });
+                  },
+                ),
+                Text(
+                  item,
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    Widget continueButton = TextButton(
+      child: const Text('Fechar'),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      style: TextButton.styleFrom(
+        primary: const Color.fromRGBO(241, 100, 31, 1),
+        textStyle: const TextStyle(
+          fontSize: 18,
+        ),
+      ),
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const Text(
+        'Ops!',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      content: const Text(
+        'Selecione a quantidade de elementos que será ordenado e o algoritmo que será utilizado.',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 18),
+      ),
+      actions: [
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   sorting() async {
@@ -190,106 +280,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  Widget buildAlgorithm() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, top: 10),
-      child: Column(
-        children: [
-          for (var item in [
-            'Bubble Sort',
-            'Quick Sort',
-            'Merge Sort',
-            'Insertion Sort',
-            'Selection Sort'
-          ])
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Radio(
-                  value: item,
-                  groupValue: algorithm,
-                  onChanged: (String? value) {
-                    setState(() {
-                      algorithm = value!;
-                    });
-                  },
-                ),
-                Text(
-                  item,
-                  style: const TextStyle(fontSize: 19),
-                ),
-              ],
-            ),
-        ],
-      ),
-    );
-  }
-
-  showAlertDialog(BuildContext context) {
-    Widget continueButton = TextButton(
-      child: const Text('Fechar'),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      style: TextButton.styleFrom(
-        primary: const Color.fromRGBO(241, 100, 31, 1),
-        textStyle: const TextStyle(
-          fontSize: 18,
-        ),
-      ),
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: const Text(
-        'Ops!',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      content: const Text(
-        'Selecione a quantidade de elementos que será ordenado e o algoritmo que será utilizado.',
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 18),
-      ),
-      actions: [
-        continueButton,
-      ],
-    );
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-
-  Widget buildQuant() {
-    return Container(
-      margin: const EdgeInsets.only(top: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          for (var item in [10, 100, 1000, 10000])
-            Row(
-              children: [
-                Radio(
-                  value: item,
-                  groupValue: quant,
-                  onChanged: (int? value) {
-                    setState(() {
-                      quant = value!;
-                    });
-                  },
-                ),
-                Text(
-                  '$item',
-                  style: const TextStyle(fontSize: 19),
-                ),
-              ],
-            )
-        ],
-      ),
-    );
+  Future<String> loadAsset(String filename) async {
+    return await rootBundle.loadString('assets/txt/$filename.txt');
   }
 }

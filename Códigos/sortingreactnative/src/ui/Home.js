@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, Text, Pressable} from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import style from '../assets/style/home';
+import About from './About';
 
 export default () => {
   var quant;
@@ -30,7 +31,6 @@ export default () => {
           initial={-1}
           onPress={value => {
             quant = value;
-            console.warn(quant);
           }}
         />
         <Text style={style.subtitle}>Selecione o algoritmo de ordenação</Text>
@@ -49,10 +49,10 @@ export default () => {
           labelHorizontal={true}
           selectedButtonColor={'#f1641f'}
           buttonColor={'#f1641f'}
+          radioStyle={{paddingBottom: 10}}
           initial={-1}
           onPress={value => {
             algorithm = value;
-            console.warn(algorithm);
           }}
         />
       </View>

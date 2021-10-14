@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -83,7 +84,8 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
-      new MainReactPackage(), // <---- add comma
+      new MainReactPackage(),
+            new SvgPackage(), // <---- add comma
       new RNFSPackage() // <---------- add package
     );
   }

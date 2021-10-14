@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                       height: 53,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (quant == -1 || algorithm == '') {
+                          if (quant == -1 || algorithm == '' || type == '') {
                             showAlertDialog(context);
                           } else {
                             sorting();
@@ -234,7 +234,7 @@ class _HomeState extends State<Home> {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       content: const Text(
-        'Selecione a quantidade de elementos que será ordenado e o algoritmo que será utilizado.',
+        'Selecione a quantidade de elementos que será ordenado, o algoritmo que será utilizado e o tipo de lista.',
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 18),
       ),

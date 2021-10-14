@@ -10,20 +10,70 @@ import {
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import style from '../assets/style/home';
-// import * as RNFS from 'react-native-fs';
+import sortingAlgorithm from '../model/sortingAlgorithm';
+import sortingList from '../model/sortingList';
 
 var quant = null;
 var algorithm = null;
+var type = null;
+var list = [];
+var listUsed = [];
 
 function sorting() {
-  if ((quant = null || algorithm == null)) {
+  if (quant == null || algorithm == null || type == null) {
     Alert.alert(
       'Ops',
-      'Selecione a quantidade de elementos que será ordenado e o algoritmo que será utilizado.',
+      'Selecione a quantidade de elementos que será ordenado, o algoritmo que será utilizado e o tipo de lista.',
     );
+
+    return false;
   } else {
-    // var path = RNFS.DocumentDirectoryPath;
-    // console.log(RNFS);
+    var sl = new sortingList();
+
+    if (type == 'det') {
+      switch (quant) {
+        case 10:
+          list = sl.size10();
+          break;
+        case 100:
+          list = sl.size100();
+          break;
+        case 1000:
+          list = sl.size1000();
+          break;
+        case 10000:
+          list = sl.size10000();
+          break;
+      }
+    } else {
+      list = sl.randomlist(quant);
+    }
+
+    for (var i = 0; i < list.length; i++) {
+      listUsed.push(list[i]);
+    }
+
+    var sa = new sortingAlgorithm();
+
+    switch (algorithm) {
+      case 'bubble':
+        sa.bubbleSort(list);
+        break;
+      case 'quick':
+        sa.quickSort(list);
+        break;
+      case 'merge':
+        sa.mergeSort(list);
+        break;
+      case 'insertion':
+        sa.insertionSort(list);
+        break;
+      case 'selection':
+        sa.selectionSort(list);
+        break;
+    }
+
+    return true;
   }
 }
 
@@ -46,9 +96,10 @@ export default props => {
               {label: '1000', value: 1000},
               {label: '10000', value: 10000},
             ]}
-            labelStyle={{fontSize: 20, marginRight: 10}}
+            labelStyle={{fontSize: 17, marginRight: 10}}
             formHorizontal={true}
             labelHorizontal={true}
+            buttonSize={17}
             selectedButtonColor={'#f1641f'}
             buttonColor={'#f1641f'}
             initial={-1}
@@ -67,20 +118,48 @@ export default props => {
               {label: 'Insertion Sort', value: 'insertion'},
               {label: 'Selection Sort', value: 'selection'},
             ]}
-            labelStyle={{fontSize: 20, marginRight: 10}}
+            labelStyle={{fontSize: 17, marginRight: 10}}
             formHorizontal={false}
             labelHorizontal={true}
+            buttonSize={17}
             selectedButtonColor={'#f1641f'}
             buttonColor={'#f1641f'}
-            radioStyle={{paddingBottom: 10}}
+            radioStyle={{paddingBottom: 8}}
             initial={-1}
             onPress={value => {
               algorithm = value;
             }}
           />
         </View>
-        <View style={style.content}>
-          <Pressable style={style.button} onPress={sorting}>
+        <View style={style.content2}>
+          <Text style={style.subtitle}>Tipo de Lista</Text>
+          <RadioForm
+            radio_props={[
+              {label: 'Pré Determinada', value: 'det'},
+              {label: 'Aleatória', value: 'rand'},
+            ]}
+            labelStyle={{fontSize: 17, marginRight: 30}}
+            formHorizontal={true}
+            labelHorizontal={true}
+            selectedButtonColor={'#f1641f'}
+            buttonColor={'#f1641f'}
+            buttonSize={17}
+            initial={-1}
+            onPress={value => {
+              type = value;
+            }}
+          />
+          <Pressable
+            style={style.button}
+            onPress={() => {
+              var valid = sorting();
+              if (valid) {
+                props.navigation.navigate('Result', {
+                  list: list,
+                  listUsed: listUsed,
+                });
+              }
+            }}>
             <Text style={style.buttonText}>Ordenar</Text>
           </Pressable>
           <Pressable onPress={() => props.navigation.navigate('About')}>

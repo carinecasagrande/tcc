@@ -18,9 +18,8 @@ export default props => (
         <Text style={style.description}>
           Trabalho de Conclusão de Curso apresentado ao Curso de Ciência da
           Computação do Centro Universitário Filadélfia – UniFil, como requisito
-          parcial à obtenção do título de Bacharel em Ciência da Computação
-          {'\n\n'}
-          Orientadora: Profª. Simone Sawasaki Tanaka
+          parcial à obtenção do título de Bacharel em Ciência da Computação.
+          {'\n\n'}Orientadora: Profª. Simone Sawasaki Tanaka
         </Text>
         <Text style={style.location}>Londrina{'\n'}2021</Text>
         <Pressable

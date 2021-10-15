@@ -20,6 +20,9 @@ var list = [];
 var listUsed = [];
 
 function sorting() {
+  list = [];
+  listUsed = [];
+
   if (quant == null || algorithm == null || type == null) {
     Alert.alert(
       'Ops',

@@ -3,7 +3,7 @@ class sortingList {
     var list = [];
 
     while (list.length != size) {
-      let number = Math.floor(Math.random() * (size + 1) + 1);
+      let number = Math.floor(Math.random() * size + 1);
       if (list.indexOf(number) == -1) {
         list.push(number);
       }

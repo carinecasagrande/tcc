@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
                 children: [
                   Image.asset('lib/assets/img/icon.png', height: 90),
                   Container(
-                    margin: const EdgeInsets.only(bottom: 25),
+                    margin: const EdgeInsets.only(bottom: 20),
                     child: const Text(
                       'Análise de desempenho utilizando algortimos de ordenação',
                       textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(fontSize: 17),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(bottom: 25),
+                    margin: const EdgeInsets.only(bottom: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
@@ -150,7 +150,7 @@ class _HomeState extends State<Home> {
 
   Widget buildQuant() {
     return Container(
-      margin: const EdgeInsets.only(bottom: 25),
+      margin: const EdgeInsets.only(bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -179,7 +179,7 @@ class _HomeState extends State<Home> {
 
   Widget buildAlgorithm() {
     return Container(
-      margin: const EdgeInsets.only(left: 20, bottom: 25),
+      margin: const EdgeInsets.only(left: 20, bottom: 20),
       child: Column(
         children: [
           for (var item in [

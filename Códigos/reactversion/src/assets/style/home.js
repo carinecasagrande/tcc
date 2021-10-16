@@ -19,15 +19,18 @@ export default StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: '800',
+    color: 'black',
     fontSize: 17,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 17,
+    fontWeight: '500',
     textAlign: 'center',
     marginTop: 30,
     marginBottom: 10,
+    color: 'black',
+    fontSize: 17,
   },
   algorithm: {
     marginTop: -20,
@@ -45,10 +48,11 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#ffffff',
     fontSize: 17,
-    fontWeight: 'bold',
+    fontWeight: '800',
   },
   buttonAbout: {
-    fontSize: 17,
     color: '#f1641f',
+    fontSize: 17,
+    fontWeight: '500',
   },
 });

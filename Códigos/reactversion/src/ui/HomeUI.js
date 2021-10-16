@@ -22,10 +22,9 @@ var listUsed = [];
 function sorting() {
   if (quant == null || algorithm == null || type == null) {
     Alert.alert(
-      'Ops',
+      'Ops!',
       'Selecione a quantidade de elementos que será ordenado, o algoritmo que será utilizado e o tipo de lista.',
     );
-    return false;
   } else {
     var timestampInitial = Date.now();
 
@@ -106,7 +105,7 @@ export default props => {
               {label: '1000', value: 1000},
               {label: '10000', value: 10000},
             ]}
-            labelStyle={{fontSize: 17, marginRight: 10}}
+            labelStyle={{fontSize: 17, marginRight: 10, fontWeight: '500'}}
             formHorizontal={true}
             labelHorizontal={true}
             buttonSize={17}
@@ -128,7 +127,7 @@ export default props => {
               {label: 'Insertion Sort', value: 'insertion'},
               {label: 'Selection Sort', value: 'selection'},
             ]}
-            labelStyle={{fontSize: 17, marginRight: 10}}
+            labelStyle={{fontSize: 17, marginRight: 10, fontWeight: '500'}}
             formHorizontal={false}
             labelHorizontal={true}
             buttonSize={17}
@@ -148,7 +147,7 @@ export default props => {
               {label: 'Pré Determinada', value: 'det'},
               {label: 'Aleatória', value: 'rand'},
             ]}
-            labelStyle={{fontSize: 17, marginRight: 30}}
+            labelStyle={{fontSize: 17, marginRight: 30, fontWeight: '500'}}
             formHorizontal={true}
             labelHorizontal={true}
             selectedButtonColor={'#f1641f'}

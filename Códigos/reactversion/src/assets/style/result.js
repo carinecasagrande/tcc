@@ -5,17 +5,21 @@ export default StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: '800',
     fontSize: 17,
+    color: '#000000',
     textAlign: 'center',
     marginTop: 20,
   },
   timeLabel: {
-    fontWeight: 'bold',
+    fontWeight: '800',
     fontSize: 17,
+    color: '#000000',
   },
   time: {
+    fontWeight: '500',
     fontSize: 17,
+    color: '#000000',
   },
   timeText: {
     marginTop: 10,
@@ -30,13 +34,14 @@ export default StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     color: '#ffffff',
+    fontWeight: '800',
     fontSize: 17,
-    fontWeight: 'bold',
   },
   buttonAbout: {
-    fontSize: 17,
     marginTop: 10,
     textAlign: 'center',
     color: '#f1641f',
+    fontWeight: '500',
+    fontSize: 17,
   },
 });

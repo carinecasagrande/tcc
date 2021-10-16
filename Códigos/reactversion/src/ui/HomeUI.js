@@ -18,7 +18,6 @@ var algorithm = null;
 var type = null;
 var list = [];
 var listUsed = [];
-var props = null;
 
 function sorting() {
   if (quant == null || algorithm == null || type == null) {

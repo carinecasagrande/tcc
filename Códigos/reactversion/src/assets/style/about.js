@@ -15,6 +15,7 @@ export default StyleSheet.create({
   subtitle: {
     fontSize: 17,
     textAlign: 'center',
+    fontWeight: 'normal',
     marginTop: 50,
   },
   titlePaperwork: {

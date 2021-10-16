@@ -252,6 +252,8 @@ class _HomeState extends State<Home> {
   }
 
   sorting() async {
+    int timestampInitial = DateTime.now().millisecondsSinceEpoch;
+
     List<int> list = [];
     List<int> listUsed = [];
 
@@ -304,7 +306,10 @@ class _HomeState extends State<Home> {
       context,
       MaterialPageRoute(
         builder: (context) => Result(
-            title: 'Resultado', unsortedlist: listUsed, sortedlist: list),
+            title: 'Resultado',
+            unsortedlist: listUsed,
+            sortedlist: list,
+            timestampInitial: timestampInitial),
       ),
     ).then((_) {
       setState(() {

@@ -7,12 +7,14 @@ class Result extends StatelessWidget {
   final String title;
   final List<num> unsortedlist;
   final List<num> sortedlist;
+  final int timestampInitial;
 
   const Result(
       {Key? key,
       required this.title,
       required this.unsortedlist,
-      required this.sortedlist})
+      required this.sortedlist,
+      required this.timestampInitial})
       : super(key: key);
 
   @override
@@ -118,6 +120,19 @@ class Result extends StatelessWidget {
                                 ),
                               ),
                             ),
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                "Tempo de Execução: ",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 17),
+                              ),
+                              Text(
+                                "${DateTime.now().millisecondsSinceEpoch - timestampInitial} ms",
+                                style: const TextStyle(fontSize: 17),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 25),

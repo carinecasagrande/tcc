@@ -18,19 +18,21 @@ var algorithm = null;
 var type = null;
 var list = [];
 var listUsed = [];
+var props = null;
 
 function sorting() {
-  list = [];
-  listUsed = [];
-
   if (quant == null || algorithm == null || type == null) {
     Alert.alert(
       'Ops',
       'Selecione a quantidade de elementos que será ordenado, o algoritmo que será utilizado e o tipo de lista.',
     );
-
     return false;
   } else {
+    var timestampInitial = Date.now();
+
+    list = [];
+    listUsed = [];
+
     var sl = new sortingList();
 
     if (type == 'det') {
@@ -76,11 +78,17 @@ function sorting() {
         break;
     }
 
-    return true;
+    this.props.navigation.navigate('Result', {
+      list: list,
+      listUsed: listUsed,
+      timestampInitial: timestampInitial,
+    });
   }
 }
 
 export default props => {
+  this.props = props;
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -155,17 +163,11 @@ export default props => {
           <Pressable
             style={style.button}
             onPress={() => {
-              var valid = sorting();
-              if (valid) {
-                props.navigation.navigate('Result', {
-                  list: list,
-                  listUsed: listUsed,
-                });
-              }
+              sorting();
             }}>
             <Text style={style.buttonText}>Ordenar</Text>
           </Pressable>
-          <Pressable onPress={() => props.navigation.navigate('About')}>
+          <Pressable onPress={() => this.props.navigation.navigate('About')}>
             <Text style={style.buttonAbout}>Sobre o app</Text>
           </Pressable>
         </View>

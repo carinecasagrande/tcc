@@ -22,17 +22,17 @@ class Result extends StatelessWidget {
     final List<ChartData> unsorted = [];
     for (var i = 0; i < unsortedlist.length; i++) {
       unsorted
-          .add(ChartData(label: "${unsortedlist[i]}", number: unsortedlist[i]));
+          .add(ChartData(label: '${unsortedlist[i]}', number: unsortedlist[i]));
     }
 
     final List<ChartData> sorted = [];
     for (var i = 0; i < sortedlist.length; i++) {
-      sorted.add(ChartData(label: "${sortedlist[i]}", number: sortedlist[i]));
+      sorted.add(ChartData(label: '${sortedlist[i]}', number: sortedlist[i]));
     }
 
     List<charts.Series<ChartData, String>> unsortedChart = [
       charts.Series(
-        id: "Ordem Inicial",
+        id: 'Ordem Inicial',
         data: unsorted,
         domainFn: (ChartData unsortedChart, _) => unsortedChart.label,
         measureFn: (ChartData unsortedChart, _) => unsortedChart.number,
@@ -44,7 +44,7 @@ class Result extends StatelessWidget {
 
     List<charts.Series<ChartData, String>> sortedChart = [
       charts.Series(
-        id: "Ordem final",
+        id: 'Ordem final',
         data: sorted,
         domainFn: (ChartData sortedChart, _) => sortedChart.label,
         measureFn: (ChartData sortedChart, _) => sortedChart.number,
@@ -56,7 +56,7 @@ class Result extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (_, constraints) => Material(
-        color: Colors.white,
+        color: const Color.fromRGBO(242, 242, 242, 1),
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -65,14 +65,16 @@ class Result extends StatelessWidget {
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height * 0.9,
+                    color: const Color.fromRGBO(242, 242, 242, 1),
                     padding: const EdgeInsets.all(20),
                     child: Card(
+                      color: const Color.fromRGBO(242, 242, 242, 1),
                       margin: EdgeInsets.zero,
                       elevation: 0,
                       child: Column(
                         children: <Widget>[
                           const Text(
-                            "Ordem Inicial",
+                            'Ordem Inicial',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17),
                           ),
@@ -97,7 +99,7 @@ class Result extends StatelessWidget {
                             ),
                           ),
                           const Text(
-                            "Ordem Inicial",
+                            'Ordem Inicial',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 17),
                           ),
@@ -124,12 +126,12 @@ class Result extends StatelessWidget {
                           Row(
                             children: [
                               const Text(
-                                "Tempo de Execução: ",
+                                'Tempo de Execução: ',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 17),
                               ),
                               Text(
-                                "${DateTime.now().millisecondsSinceEpoch - timestampInitial} ms",
+                                '${DateTime.now().millisecondsSinceEpoch - timestampInitial} ms',
                                 style: const TextStyle(fontSize: 17),
                               ),
                             ],

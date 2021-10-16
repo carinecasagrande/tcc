@@ -8,7 +8,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) => Material(
-        color: Colors.white,
+        color: const Color.fromRGBO(242, 242, 242, 1),
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(

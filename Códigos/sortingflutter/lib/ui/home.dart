@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) => Material(
-        color: Colors.white,
+        color: const Color.fromRGBO(242, 242, 242, 1),
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -214,7 +214,7 @@ class _HomeState extends State<Home> {
 
   showAlertDialog(BuildContext context) {
     Widget continueButton = TextButton(
-      child: const Text('Fechar'),
+      child: const Text('Ok'),
       onPressed: () {
         Navigator.pop(context);
       },

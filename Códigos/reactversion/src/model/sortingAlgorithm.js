@@ -33,7 +33,7 @@ class sortingAlgorithm {
     }
 
     let pivotArray = [pivot];
-    return quickSort(left).concat(pivotArray, quickSort(right));
+    return this.quickSort(left).concat(pivotArray, this.quickSort(right));
   }
 
   mergeSort(vector) {
@@ -43,7 +43,7 @@ class sortingAlgorithm {
     var left = vector.slice(0, middle);
     var right = vector.slice(middle, vector.length);
 
-    return merge(mergeSort(left), mergeSort(right));
+    return this.merge(this.mergeSort(left), this.mergeSort(right));
   }
 
   merge(left, right) {

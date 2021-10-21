@@ -251,7 +251,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  sorting() async {
+  sorting() {
     int timestampInitial = DateTime.now().millisecondsSinceEpoch;
 
     List<int> list = [];

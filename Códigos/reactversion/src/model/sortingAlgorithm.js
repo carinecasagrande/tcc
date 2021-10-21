@@ -73,6 +73,8 @@ class sortingAlgorithm {
 
       vector[j + 1] = key;
     }
+
+    return vector;
   }
 
   selectionSort(vector) {
@@ -88,6 +90,8 @@ class sortingAlgorithm {
         vector[min] = aux;
       }
     }
+
+    return vector;
   }
 }
 

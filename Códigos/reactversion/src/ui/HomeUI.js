@@ -60,19 +60,19 @@ function sorting() {
 
     switch (algorithm) {
       case 'bubble':
-        sa.bubbleSort(list);
+        list = sa.bubbleSort(list);
         break;
       case 'quick':
-        sa.quickSort(list);
+        list = sa.quickSort(list);
         break;
       case 'merge':
-        sa.mergeSort(list);
+        list = sa.mergeSort(list);
         break;
       case 'insertion':
-        sa.insertionSort(list);
+        list = sa.insertionSort(list);
         break;
       case 'selection':
-        sa.selectionSort(list);
+        list = sa.selectionSort(list);
         break;
     }
 

@@ -312,11 +312,7 @@ class _HomeState extends State<Home> {
             timestampInitial: timestampInitial),
       ),
     ).then((_) {
-      setState(() {
-        algorithm = '';
-        quant = -1;
-        type = '';
-      });
+      
     });
   }
 }
